@@ -1,0 +1,50 @@
+<!Doctype html>
+<html lang="en" dir ="ltr">
+    <head>
+    <meta charser="utf-8">
+       <title></title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <form action = "Signup-page.html" class = "Signup-form">
+        <h1>Sign up</h1>
+        <div class="txtb">
+            
+            <input type ="text"pattern="[a-zA-Z0-9](?!.*[^a-zA-Z0-9]).{5,}" title="Must contain only alphanumeric characters, and at least 5 or more characters">
+            <span data-placeholder= "Username"></span>
+            
+        </div>
+        <div class="txtb">
+            
+            <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            <span data-placeholder="Password"></span>
+            
+        </div>
+        <input type="submit" class="logbtn" value = "Login">
+        
+        <div class ="bottom-text">
+        Have an account? <a href="#">Login in</a>
+        
+        </div>
+    
+        </form>
+        
+        
+        <script type="text/javascript">
+            $(".txtb input").on("focus",function(){
+                $(this).addClass("focus");
+            });
+            (".txtb input").on("blur",function(){
+                if($(this).val() =="")
+                $(this).addClass("focus");
+            });
+            
+        </script>
+        <script src="check-password-1.js"></script>
+    </body>
+
+
+
+</html>
