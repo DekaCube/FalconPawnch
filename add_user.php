@@ -35,7 +35,7 @@ if(isset($_REQUEST["pw"]) and isset($_REQUEST["username"])){
 }
 else{
     $error_happend = 1;
-    $error_type = 1;
+    
 }
 
 if($varibles_set){
@@ -81,7 +81,7 @@ if($result = $db->query($query))
 	}
     if($found == 0){ //If the name doesn't exist, insert it
 		$sendme = 'INSERT INTO USERS (username,password) VALUES ("'.$name.'","'.$hashedpw.'");';
-    echo '{account_creation:"success"}';
+    echo '{"account_creation":"success"}';
 		$db->query($sendme);
 		
 	}
