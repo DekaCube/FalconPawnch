@@ -12,23 +12,22 @@
         <h1>Sign up</h1>
         <div class="txtb">
             
-            <input type ="text"pattern="[a-zA-Z0-9](?!.*[^a-zA-Z0-9]).{5,}" title="Must contain only alphanumeric characters, and at least 5 or more characters">
+            <input type ="text"pattern="[a-zA-Z0-9](?!.*[^a-zA-Z0-9]).{5,}" title="Must contain only alphanumeric characters, and at least 5 or more characters" id= "uname">
             <span data-placeholder= "Username"></span>
             
         </div>
         <div class="txtb">
             
-            <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            <input type="password" id="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
             <span data-placeholder="Password"></span>
             
         </div>
-        <input type="submit" class="logbtn" value = "Login">
+        <input type="submit" class="logbtn" value = "Sign up" id="go">
         
         <div class ="bottom-text">
         Have an account? <a href="#">Login in</a>
         
         </div>
-    
         </form>
         
         
@@ -42,7 +41,7 @@
             });
             
         </script>
-        <script src="check-password-1.js"></script>
+        <script src="register.js"></script>
     </body>
 
 
