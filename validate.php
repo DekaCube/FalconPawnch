@@ -1,4 +1,15 @@
 <?php
+//VALIDATE ACCESS TOKEN AND UPDATE IT
+
+//Turn off error reporting to hide notices from end user.
+//error_reporting(0);
+
+//Needed for CORS Bullshit
+header("Access-Control-Allow-Origin: *");
+
+require_once './creds.php';
+$token = "";
+$debug_level = 0;
 
 function validate_token($db,$debug_level){
     //Make sure access token variable is set
@@ -63,3 +74,16 @@ function validate_token($db,$debug_level){
     
     return array(1,$user);
 }
+
+$res = validate_token($db,$debug_level);
+$user = $res[1];
+$valid = $res[0];
+
+echo '{ "token_valid" : '.$valid.', "user_name" : "'.$user.'"}';
+
+
+    
+
+
+
+
