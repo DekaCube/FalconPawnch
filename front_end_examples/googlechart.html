@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+        ["Time", "Members", { role: "style" } ],
+        ["6-7:00AM", 2, "red"],
+        ["7-8:00AM", 3, "#ab1403"],
+        ["8-9:00AM", 3, "red"],
+        ["9-10:00AM", 4, "#ab1403"],
+        ["10-11:00AM", 2, "red"],
+        ["11-12:00PM", 4, "#ab1403"],
+        ["12-1:00PM", 5, "red"],
+        ["1-2:00PM", 4, "#ab1403"],
+        ["2-3:00PM", 2, "red"],
+        ["3-4:00PM", 1, "#ab1403"],
+        ["4-5:00PM", 4, "red"],
+        ["5-6:00PM", 4, "#ab1403"],
+        ["6-7:00PM", 4, "red"],
+        ["7-8;00PM", 1, "#ab1403"],
+        ["8-9:00PM", 4, "red"],
+        ["9-10:00PM", 4, "#ab1403"],
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Group Memebers Available",
+        width: 800,
+        height: 600,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+
+        
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
