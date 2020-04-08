@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //Set event listeners/handlers for buttons
     document.getElementById('go').onclick = signup_handler;
     document.getElementById('login').onclick = login_handler;
-    
+    document.getElementById('timetest').onclick = testtime;
     
     
     
@@ -13,6 +13,13 @@ document.addEventListener("DOMContentLoaded", function(){
     
     
 });
+function testtime(){
+    let timeslot = '010101010101010101010101010101010101010101010101';
+    let daychange = 'monday';
+    Session.updateTime(daychange,timeslot,success,fail);
+}
+
+
 function login_handler(){
     let username = document.getElementById('uname').value;
     let pw = document.getElementById('pw').value;
@@ -33,6 +40,9 @@ function success(){
     //This is where you would do your work for a specific callback
     console.log("We did it!");
     console.log(Session.getResult());
+    if(Session.isLoggedIn()){
+        console.log(Session.getAT());
+    }
 }
 function fail(){
     //This is where you would recover from a failure.
