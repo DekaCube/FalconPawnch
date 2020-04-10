@@ -13,12 +13,12 @@ define("SALT_FOR_PW","WhenDiagramKings");
 
 $hashedpw = hash("sha256",$getaccess.SALT_FOR_PW);
 //echo $hashedpw;
-$bomb = "DELETE FROM USERS;";
-$bomb2 = "DELETE FROM TOKENS;";
+$bomb = "DELETE FROM USERS; DELETE FROM TOKENS; DELETE FROM GROUPS;";
+
 
 if($hashedpw == PASSWORD_TO_DELETE){
     $db->query($bomb);
-    $db->query($bomb2);
+   
     echo "DONE";
 }
 else{
