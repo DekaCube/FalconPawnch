@@ -413,8 +413,8 @@ Class Group {
         $arr = $this->getSundays();
         $sun = $this->merge_arrays($arr);
 
-        $rv = array("action" => "success","monday" => $mon,"tuesday" => $tue,"wednesday" => $wed,
-        "thursday" => $thr,"friday" => $fri,"saturday" => $sat, "sunday" => $sun);
+        $rv = array("action" => "success","owner" => $this->owner,"monday" => $mon,"tuesday" => $tue,"wednesday" => $wed,
+        "thursday" => $thr,"friday" => $fri,"saturday" => $sat, "sunday" => $sun,"members" => $this->getMembers());
 
         return $rv;
 
