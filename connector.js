@@ -19,14 +19,12 @@
 * Create group
 * Join Group
 * Leave Group 
-
 * Get Group Info
 */ 
 
 
 /* TODO 
 * Better Failure Detection
-
 */ 
 
 
@@ -192,6 +190,7 @@ class Session {
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let result = JSON.parse(this.responseText);
+                console.log(this.responseText);
                 if(result['action'] == 'success'){
                     Session.action = 'success';
                     GroupInfo.buildData(this.responseText);
@@ -210,9 +209,9 @@ class Session {
         let p2 = Session.getAT();
         let p3 = '&group='
         let p4 = groupname;
-        
+        let url = p1 + p2 + p3 + p4;
             
-        xmlhttp.open("POST", url, true);
+        xmlhttp.open("POST",url, true);
         xmlhttp.send();
     }
 
@@ -414,7 +413,7 @@ class Session {
                     
                 }
                 else{
-                    Session.actionr = result.reason;
+                    Session.action = result.reason;
                     
                     onFailCallback();
                 }
@@ -485,6 +484,7 @@ class GroupInfo {
     
     static buildData(response){
         sessionStorage.setItem("WhenDiagramG", response);
+        GroupInfo.setValid(true); 
     }
     
     static getMonday(){
@@ -565,16 +565,3 @@ class GroupInfo {
     
 }
     
-
-    
-    
-        
-        
-        
-    
-    
-        
-    
-    
-
-
