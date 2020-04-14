@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
     Session.getInfo(groupInfoS,groupInfoF);
 
     Session.getGroupInfo("123321321",groupinfoSuccess,failed);
+    redrawGroupPanel();
 
     
     
