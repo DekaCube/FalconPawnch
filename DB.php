@@ -293,7 +293,10 @@ Class Group {
     }
 
     public function isValid(){
-        return $this->isValid;
+        if($this->owner == null){
+            return false;
+        }
+        return true;
     }
 
     public function isOwner($name){
