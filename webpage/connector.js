@@ -188,6 +188,7 @@ class Session {
         console.log("GETTING GROUP INFO FOR GROUP =" + groupname);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
+            console.log(this.responseText);
             if (this.readyState == 4 && this.status == 200) {
                 let result = JSON.parse(this.responseText);
                 console.log(this.responseText);
