@@ -1,6 +1,4 @@
-var groupname
-
-
+var group = "";
 document.addEventListener("DOMContentLoaded", function(){
     //Do this when DOM is loaded
 
@@ -8,14 +6,10 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('submit').onclick = listen_handler;
     
     document.getElementById('create').onclick = group_handler;
-
-    document.getElementById('leave').onclick = group_handler;
-
     
-    Session.getInfo(userinfoSuccess,failed);
-    
+    display_name();
 
-    Session.getGroupInfo(group,groupinfoSuccess,failed);
+    Session.getGroupInfo("123321321",groupinfoSuccess,failed);
 
     var groupmonday = GroupInfo.arrToString(GroupInfo.getMonday());
 
@@ -33,8 +27,8 @@ function group_handler(){
     Session.createGroup(group,success,failed);
 }
 
-function leave_handler(){
-    Session.leaveGroup("123321321",leaveSucess,failed)
+function display_name(){
+    Session.getInfo(userinfoSuccess,failed);
 }
 
 
@@ -52,12 +46,8 @@ function failed(){
 function userinfoSuccess(){
     console.log(Session.access_token);
     console.log("worked");
-    console.log(UserInfo.getUsername());
-    groupname = UserInfo.groups[0];
-    
-    alert(groupname);
- 
-}  
+    group = UserInfo.groups[0];
+}
 
 function groupinfoSuccess(){
     console.log(Session.access_token);
@@ -65,7 +55,3 @@ function groupinfoSuccess(){
     console.log(GroupInfo.arrToString(GroupInfo.getMonday()));
 }
 
-function leaveSucess(){
-    console.log(Session.access_token);
-    console.log("left group");
-}

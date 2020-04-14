@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function(){
     //Do this when DOM is loaded
 
     //Set event listeners/handlers for buttons
-    document.getElementById("login").onclick = login_handler;
+    //document.getElementById("login").onclick = login_handler;
 
-    //document.getElementById("signup").onclick = signup_handler;
+    document.getElementById("signup").onclick = signup_handler;
 
 
 

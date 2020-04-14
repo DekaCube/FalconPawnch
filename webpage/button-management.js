@@ -493,4 +493,3 @@ function resetAll() {
     document.getElementById("buts").reset();
 }
 
-var key = Session.getInfo(userinfoSuccess,failed);
