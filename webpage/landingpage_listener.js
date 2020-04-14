@@ -162,8 +162,6 @@ function display_name(){
 function success(){
     console.log(Session.access_token);
     console.log("worked");
-    alert("success");
-
 }
 
 function failed(){
