@@ -1,0 +1,121 @@
+<!Doctype html>
+
+<html lang="en" dir ="ltr">
+    <head>
+    <meta charser="utf-8">
+       <title></title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <html lang="en">
+
+            <head>
+          
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+              <meta name="description" content="">
+              <meta name="author" content="">
+              <link rel="stylesheet" href="style1.css">
+          
+              <title>When Diagram</title>
+          
+              <!-- Bootstrap core CSS -->
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+          
+              <!-- Custom styles for this template -->
+              <link href="css/shop-homepage.css" rel="stylesheet">
+               <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+          
+          
+          
+          
+            </head>
+          
+            <body>
+          
+              <!-- Navigation -->
+                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container">
+                  <a class="navbar-brand" href="#">When Diagram</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home
+                          <span class="sr-only">(current)</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="contact.html">About</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+    </head>
+    <body>
+    <div class="Signup-form">
+        <h1>Sign up</h1>
+        <div class="txtb">
+            
+            <input type ="text" id = "username"pattern="[a-zA-Z0-9](?!.*[^a-zA-Z0-9]).{5,}" title="Must contain only alphanumeric characters, and at least 5 or more characters" required>
+            <span data-placeholder= "Username"></span>
+            
+        </div>
+        <div class="txtb">
+            
+            <input type="password" id = "password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            <span data-placeholder="Password"></span>
+            
+        </div>
+        <button  class="logbtn" id = "sign up">Sign up</button>
+        
+        <div class ="bottom-text">
+        Have an account? <a href="#">Login</a>
+        
+        </div>
+    
+    </div>
+        
+        
+        <script type="text/javascript">
+
+        function userid_validation(uid,mx,my)
+            {
+                var uid_len = uid.value.length;
+                if (uid_len == 0 || uid_len >= my || uid_len < mx)
+            {
+            alert("User Id should not be empty / length be between "+mx+" to "+my);
+            uid.focus();
+            return false;
+            }
+            return true;
+            }
+
+
+
+            $(".txtb input").on("focus",function(){
+                $(this).addClass("focus");
+            });
+            $(".txtb input").on("blur",function(){
+                if($(this).val() =="")
+                $(this).addClass("focus");
+            });
+            
+        </script>
+        <script src="listener.js"></script>
+        <script src="connector.js"></script>
+    </body>
+
+
+
+</html>
