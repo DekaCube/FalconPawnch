@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('submit').onclick = listen_handler;
     
     document.getElementById('create').onclick = group_handler;
+
+    document.getElementById('join').onclick = join_handler;
+    
     
     display_name();
     
@@ -30,8 +33,13 @@ function leaveGroupClick(){
     
 }
 
+function join_handler(){
+    let join = document.getElementById("groupname2").value;
+    Session.joinGroup(join,success,failed);
+}
+
 function hideInfoClick(){
-    this.innerHTML = "show info";
+    this.innerHTML = "Info of selected day ";
     document.getElementById('buts').style.display = "block";
     let thingtoremove = document.getElementById('groupInfo');
     document.getElementById('display').removeChild(thingtoremove);
@@ -41,10 +49,31 @@ function hideInfoClick(){
 
 function buildIframe(){
     let iframe = document.createElement('iframe');
+    if (day == 'monday'){
     iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getMonday()));
+    }
+    else if (day == 'tuesday'){
+        iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getTuesday()));
+    }
+    else if (day == 'wednesday'){
+        iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getWednesday()));
+    }
+    else if (day == 'thursday'){
+        iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getThursday()));
+    }
+    else if (day == 'friday'){
+        iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getFriday()));
+    }
+    else if (day == 'saturday'){
+        iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getSaturday()));
+    }
+    else if (day == 'sunday'){
+        iframe.setAttribute("src",'https://lamp.cse.fau.edu/~dbenne11/whendiagram/drawgraph.php?data=' + GroupInfo.arrToString(GroupInfo.getSunday()));
+    }
     iframe.setAttribute("id","groupInfo");
     iframe.style.width = "50%";
-    iframe.style.height = "50%";
+    iframe.style.height = "80%";
+    iframe.allow = "fullscreen";   
     let display = document.getElementById("display");
     display.appendChild(iframe);
 }
@@ -92,7 +121,7 @@ function populateGroups(){
         b2 = document.createElement('button');
         b1.setAttribute("id",UserInfo.groups[i]);
         b1.onclick = leaveGroupClick;
-        b2.innerHTML = "show info" //NEEDS AN ONCLICK;
+        b2.innerHTML = "Info of selcted day" //NEEDS AN ONCLICK;
         let junkspace = document.createElement('br');
         b2.setAttribute("id","b" + UserInfo.groups[i]);
         b2.onclick = showInfoClick;
@@ -133,7 +162,7 @@ function display_name(){
 function success(){
     console.log(Session.access_token);
     console.log("worked");
-    alert("login sucess");
+    alert("success");
 
 }
 
@@ -152,4 +181,3 @@ function groupinfoSuccess(){
     console.log("group retrived");
     console.log(GroupInfo.arrToString(GroupInfo.getMonday()));
 }
-
