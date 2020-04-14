@@ -15,11 +15,21 @@ document.addEventListener("DOMContentLoaded", function(){
 function signup_handler(){
     let un = document.getElementById("username").value;
     let pw = document.getElementById("password").value;
-    Session.signup(un,pw,success,failed);
+    Session.signup(un,pw,signInS,failed);
 
 }
 
+function signInS(){
+    let un = document.getElementById("username").value;
+    let pw = document.getElementById("password").value;
+    Session.login(un,pw,loginS,failed);
+    
+}  
 
+function loginS(){
+    window.location.href = "landingpage.html";
+}
+    
 
 function login_handler(){
     let un = document.getElementById("username").value;
