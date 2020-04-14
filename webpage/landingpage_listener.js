@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('create').onclick = group_handler;
 
     document.getElementById('join').onclick = join_handler;
-    
+    document.getElementById('openform1').onclick = openForm;
+    document.getElementById('openform2').onclick = openForm2;
     
     display_name();
     
@@ -137,6 +138,24 @@ function groupInfoS(){
     populateGroups()
    
 }
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    redrawGroupPanel() ;   
+  }
+
+function openForm2() {
+    document.getElementById("myForm2").style.display = "block";
+  }
+  
+function closeForm2() {
+    document.getElementById("myForm2").style.display = "none";
+    redrawGroupPanel();
+  }
 
 function groupInfoF(){
     alert("SOMETHING WENT WRONG!");
