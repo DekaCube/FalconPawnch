@@ -118,3 +118,29 @@ botton{
 	.form-container .btn:hover, .open-button:hover {
 	  opacity: 1;
 	}
+
+	.open-button1 {
+		background-color:green;
+		color: white;
+		padding: 16px 20px;
+		border: none;
+		cursor: pointer;
+		opacity: 0.8;
+		position: fixed;
+		bottom: 23px;
+		right: 28px;
+		width: 90px;
+	  }
+	  
+	  .open-button2{
+		background-color:red;
+		color: white;
+		padding: 16px 20px;
+		border: none;
+		cursor: pointer;
+		opacity: 0.8;
+		position: fixed;
+		bottom: 23px;
+		right: 28px;
+		width: 90px;
+	  }

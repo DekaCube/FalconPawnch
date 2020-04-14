@@ -9,15 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="style1.css">
-    
-    
 
     <title>When Diagram</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-      <script src="button-management.js"></script>
-      <script src="landingpage_listener.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
@@ -145,11 +141,12 @@
 <button type="button" style="height: 25px; width:150px" class="btn btn-secondary btn-sm", id="time47">11:30 PM - 12:00 AM</button>
 
      </div>
-     <div id="display" frameborder="0" allowfullscreen="allowfullscreen" style= "height: 700px;"></div>
+     <div id="display" frameborder="0" allowfullscreen="allowfullscreen"  style= "height: 400px; width: 2300px;"></div>
      </div>
      <div>
-     <button class="open-button" style="position:absolute; left:300px" id="openform1">create new group</button>
-     <button class="open-button" style="position:absolute; left:600px" id="openform2">join group</button>
+       
+     <button class="open-button" style="position:absolute; left:300px" onclick="openForm()">create new group</button>
+     <button class="open-button" style="position:absolute; left:600px" onclick="openForm2()">join group</button>
     </div>
      <div class="form-popup" id="myForm">
        <div class="form-container">
@@ -173,16 +170,33 @@
         <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
       </div>
     </div>
-    <div style="padding-top: 40px" id= "submiter">
-      <button type="button" style=" position: absolute; right:95px" class="btn btn-success", id="submit">submit </button>
-      <button type="button" style = "position: absolute; right:25px" class="btn btn-danger", id="reset"> reset </button>
+    <div id= "submiter">
+      <button class="open-button1" style=" position: fixed; right:120px;" , id="submit">submit </button>
+      <button class="open-button2" style = "position: fixed; right:25px", id="reset"> reset </button>
     </div>
        <script type="text/javascript">
   
         </script>
 
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
 
-
+  function openForm2() {
+    document.getElementById("myForm2").style.display = "block";
+  }
+  
+  function closeForm2() {
+    document.getElementById("myForm2").style.display = "none";
+  }
+  </script>
+      <script src="button-management.js"></script>
+      <script src="landingpage_listener.js"></script>
       <script src="connector.js"></script>
     </body>
 </html>
