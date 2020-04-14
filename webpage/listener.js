@@ -32,10 +32,12 @@ function login_handler(){
 function success(){
     console.log(Session.access_token);
     console.log("worked");
+    alert("success")
     window.location.href = "landingpage.html";
 
 }
 
 function failed(){
     console.log("failed");
+    alert("failed")
 }
