@@ -142,6 +142,9 @@ function groupInfoF(){
     alert("SOMETHING WENT WRONG!");
 }
 
+function redrawGroupPanel(){
+    Session.getInfo(populateGroups,null_callback);
+}
 
 
 function listen_handler(){
