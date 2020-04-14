@@ -8,12 +8,63 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('create').onclick = group_handler;
     
     display_name();
+    
+    
+    Session.getInfo(groupInfoS,groupInfoF);
 
     Session.getGroupInfo("123321321",groupinfoSuccess,failed);
 
-    var groupmonday = GroupInfo.arrToString(GroupInfo.getMonday());
+    
+    
+    
 
 });
+
+function populateGroups(){
+    console.log("ENTERING POPULATE GROUPS");
+    let workspace = document.getElementById('grouppanel');
+    
+    let node = document.createElement('h3');
+    node.innerHTML = "GROUPS";
+    
+    workspace.appendChild(node);
+    
+    let size = UserInfo.groups.length;
+    console.log(UserInfo.groups);
+    if(size == 0){
+        node = document.createElement('h3');
+        node.innerHTML = "NOT A MEMBER IN ANY GROUPS!";
+        workspace.appendChild(node);
+    }
+    let i = 0;
+    let b1 = null;
+    let b2 = null;
+    for(i = 0; i < size;i++){
+        node = document.createElement('p');
+        node.innerHTML = UserInfo.groups[i];
+        console.log(UserInfo.groups[i]);
+        node.setAttribute('id',UserInfo.groups[i]);
+        b1 = document.createElement('button');
+        b1.innerHTML = "leave"; //NEEDS AN ONCLICK
+        b2 = document.createElement('button');
+        b2.innerHTML = "show info" //NEEDS AN ONCLICK;
+        let junkspace = document.createElement('br');
+        workspace.appendChild(node);
+        workspace.appendChild(b1);
+        workspace.appendChild(b2);
+        
+    }
+    console.log("EXITING POPULATE GROUPS");
+}
+
+function groupInfoS(){
+    populateGroups()
+   
+}
+
+function groupInfoF(){
+    alert("SOMETHING WENT WRONG!");
+}
 
 
 
