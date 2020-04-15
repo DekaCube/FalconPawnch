@@ -33,12 +33,12 @@ define("DEFAULT_FILTER", str_repeat(1, SLOT_COUNT));
 function availability_scan($input){ //shows how many members are available at each time slot
     $group_size = count($input);
     //echo $group_size;
-    $available_members = str_repeat(0, SLOT_COUNT);
+    $available_members = array_fill(0, SLOT_COUNT, 0);
     for ($i = 0; $i < SLOT_COUNT; $i++)
     {
         foreach ($input as $member)
         {
-            $available_members[$i] = $available_members[$i] + $member[$i];
+            $available_members[$i] += $member[$i];
         }
     }
     return $available_members;
@@ -97,11 +97,11 @@ function max_by_member_count($input, $minimum_members)
 ?>
 
 <?php
-function filter_by_member_count($input, $minimum_members, $self_filter_mode = 0)
+function filter_by_member_count($input, $minimum_members = 1, $self_filter_mode = 0)
 {
     // the lines of code between pairs of //** indicate code for finding
     // the maximum time slot that fulfills the filters
-    if ($minimum_members > 0)
+    if ($minimum_members > 0 && $minimum_members <= count($input))
     {
         if ($self_filter_mode == 1)
             $personal_filter = END_USER;    //used to filter out any timeslots when you aren't available
@@ -109,12 +109,12 @@ function filter_by_member_count($input, $minimum_members, $self_filter_mode = 0)
             $personal_filter = DEFAULT_FILTER;
         
         //**
-        $largest_time_slot = 0;
+        //$largest_time_slot = 0;
         //**
 
         if ($minimum_members <= count($input))
         {
-            $filtered_schedule = "";
+            $filtered_schedule = array_fill(0, SLOT COUNT, 0);
             $available_members = availability_scan($input);
 
             //**
@@ -129,7 +129,7 @@ function filter_by_member_count($input, $minimum_members, $self_filter_mode = 0)
                 {
                     //not sure if should do this to identify values above
                     //minimum or 1's for a sort of indicator bulb
-                    $filtered_schedule[$i] = $available_members[$i];
+                    $filtered_schedule[$i] = 1;
                     
                     //**
                     $possible_time_slot++;
@@ -167,18 +167,17 @@ function filter_by_member_count($input, $minimum_members, $self_filter_mode = 0)
         //echo $filtered_schedule . "\n";
         
         //**
-        if ($largest_time_slot > 0)
+        /*if ($largest_time_slot > 0)
         {
             $l_slot_end_time = $l_slot_start_time + $largest_time_slot;
             echo "The largest time slot is from ", TIME_SLOT_BOUNDS[$l_slot_start_time], " to ";
             echo TIME_SLOT_BOUNDS[$l_slot_end_time], "." . "\n";
         //  $l_slot_indexes = array([$l_slot_start_time, $l_slot_end_time]);
         //  return $l_slot_indexes;
-            return $filtered_schedule;
-        }
+        }*/
         //**
 
-        else echo "No time slot(s) available." . "\n";
+        return $filtered_schedule;
     }
 }
 ?>
