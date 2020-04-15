@@ -112,44 +112,41 @@ function filter_by_member_count($input, $minimum_members = 1, $self_filter_mode 
         //$largest_time_slot = 0;
         //**
 
-        if ($minimum_members <= count($input))
+        $filtered_schedule = array_fill(0, SLOT COUNT, 0);
+        $available_members = availability_scan($input);
+
+        //**
+        $l_slot_start_time = -1;
+        $possible_time_slot = 0;
+        $p_slot_start_time = -1;
+        //**
+
+        for ($i = 0; $i < SLOT_COUNT; $i++)
         {
-            $filtered_schedule = array_fill(0, SLOT COUNT, 0);
-            $available_members = availability_scan($input);
-
-            //**
-            $l_slot_start_time = -1;
-            $possible_time_slot = 0;
-            $p_slot_start_time = -1;
-            //**
-            
-            for ($i = 0; $i < SLOT_COUNT; $i++)
+            if ($available_members[$i] >= $minimum_members && $personal_filter[$i])
             {
-                if ($available_members[$i] >= $minimum_members && $personal_filter[$i])
-                {
-                    //not sure if should do this to identify values above
-                    //minimum or 1's for a sort of indicator bulb
-                    $filtered_schedule[$i] = 1;
-                    
-                    //**
-                    $possible_time_slot++;
-                    //**
-                }
-                else
-                {
-                    $filtered_schedule[$i] = 0;
-                    
-                    //**
-                    if ($possible_time_slot > $largest_time_slot)
-                    {
-                        $largest_time_slot = $possible_time_slot;
-                        $l_slot_start_time = $p_slot_start_time;
-                    }
+                //not sure if should do this to identify values above
+                //minimum or 1's for a sort of indicator bulb
+                $filtered_schedule[$i] = 1;
 
-                    $possible_time_slot = 0;
-                    $p_slot_start_time = $i + 1;
-                    //**
+                //**
+                $possible_time_slot++;
+                //**
+            }
+            else
+            {
+                $filtered_schedule[$i] = 0;
+
+                //**
+                if ($possible_time_slot > $largest_time_slot)
+                {
+                    $largest_time_slot = $possible_time_slot;
+                    $l_slot_start_time = $p_slot_start_time;
                 }
+
+                $possible_time_slot = 0;
+                $p_slot_start_time = $i + 1;
+                //**
             }
 
             //**
@@ -160,28 +157,28 @@ function filter_by_member_count($input, $minimum_members = 1, $self_filter_mode 
             }
             //**
         }
-        else echo "Not enough members in group." .  "\n";
-
-        //echo $available_members . "\n";
-        //echo $personal_filter . "\n";
-        //echo $filtered_schedule . "\n";
-        
-        //**
-        /*if ($largest_time_slot > 0)
-        {
-            $l_slot_end_time = $l_slot_start_time + $largest_time_slot;
-            echo "The largest time slot is from ", TIME_SLOT_BOUNDS[$l_slot_start_time], " to ";
-            echo TIME_SLOT_BOUNDS[$l_slot_end_time], "." . "\n";
-        //  $l_slot_indexes = array([$l_slot_start_time, $l_slot_end_time]);
-        //  return $l_slot_indexes;
-        }*/
-        //**
-
-        return $filtered_schedule;
     }
+    else echo "Not valid input." .  "\n";
+
+    //echo $available_members . "\n";
+    //echo $personal_filter . "\n";
+    //echo $filtered_schedule . "\n";
+
+    //**
+    if ($largest_time_slot > 0)
+    {
+        $l_slot_end_time = $l_slot_start_time + $largest_time_slot;
+        echo "The largest time slot is from ", TIME_SLOT_BOUNDS[$l_slot_start_time], " to ";
+        echo TIME_SLOT_BOUNDS[$l_slot_end_time], "." . "\n";
+    //  $l_slot_indexes = array([$l_slot_start_time, $l_slot_end_time]);
+    //  return $l_slot_indexes;
+    }
+    //**
+
+    return $filtered_schedule;
 }
 ?>
 
 <?php
-filter_by_member_count($input_array, 2)
+//filter_by_member_count($input_array, 2)
 ?>
