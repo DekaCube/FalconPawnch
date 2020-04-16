@@ -115,7 +115,7 @@ class Session {
             
         xmlhttp.open("POST", url, true);
         xmlhttp.send();
-        Session.get
+        
     }
     
     //Joins a group
