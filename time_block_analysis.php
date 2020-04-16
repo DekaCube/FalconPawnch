@@ -46,7 +46,7 @@ function availability_scan($input){ //shows how many members are available at ea
 ?>
 
 <?php
-function max_by_member_count($input, $minimum_members)
+function max_by_member_count($available_members, $minimum_members)
 {
     if ($minimum_members > 0)
     {
@@ -56,7 +56,6 @@ function max_by_member_count($input, $minimum_members)
             $l_slot_start_time = -1;
             $possible_time_slot = 0;
             $p_slot_start_time = -1;
-            $available_members = availability_scan($input);
             for ($i = 0; $i < SLOT_COUNT; $i++)
             {
                 if ($available_members[$i] >= $minimum_members)
@@ -97,7 +96,7 @@ function max_by_member_count($input, $minimum_members)
 ?>
 
 <?php
-function filter_by_member_count($input, $minimum_members = 1, $self_filter_mode = 0)
+function filter_by_member_count($available_members, $minimum_members = 1, $self_filter_mode = 0)
 {
     // the lines of code between pairs of //** indicate code for finding
     // the maximum time slot that fulfills the filters
@@ -113,7 +112,6 @@ function filter_by_member_count($input, $minimum_members = 1, $self_filter_mode 
         //**
 
         $filtered_schedule = array_fill(0, SLOT COUNT, 0);
-        $available_members = availability_scan($input);
 
         //**
         $l_slot_start_time = -1;
@@ -180,5 +178,5 @@ function filter_by_member_count($input, $minimum_members = 1, $self_filter_mode 
 ?>
 
 <?php
-//filter_by_member_count($input_array, 2)
+filter_by_member_count(availability_scan($input_array), 2)
 ?>
