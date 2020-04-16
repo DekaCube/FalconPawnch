@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        const SLOT_COUNT = 48;  //number of time slots available to a single user
+        const TIME_SLOT_BOUNDS =      [ '12:00 AM', '12:30 AM', '1:00 AM',
+            /* A list of the start */   '1:30 AM', '2:00 AM', '2:30 AM',
+            /* and end times for each*/ '3:00 AM', '3:30 AM', '4:00 AM',
+            /* existing time slot */    '4:30 AM', '5:00 AM', '5:30 AM',
+                                        '6:00 AM', '6:30 AM', '7:00 AM',
+                                        '7:30 AM', '8:00 AM', '8:30 AM',
+                                        '9:00 AM', '9:30 AM', '10:00 AM',
+                                        '10:30 AM', '11:00 AM', '11:30 AM',
+                                        '12:00 PM', '12:30 PM', '1:00 PM',
+                                        '1:30 PM', '2:00 PM', '2:30 PM',
+                                        '3:00 PM', '3:30 PM', '4:00 PM',
+                                        '4:30 PM', '5:00 PM', '5:30 PM',
+                                        '6:00 PM', '6:30 PM', '7:00 PM',
+                                        '7:30 PM', '8:00 PM', '8:30 PM',
+                                        '9:00 PM', '9:30 PM', '10:00 PM',
+                                        '10:30 PM', '11:00 PM', '11:30 PM',
+                                        '12:00 AM'];
+        //import {SLOT_COUNT, TIME_SLOT_BOUNDS} from '/constants.js';
+
+        //12AM-1AM [0,1];
+        //1am-2AM  [2,3];
+        //2am-3AM  [3,4]
+        //3AM-4AM  [5,6]
+        //4AM-5am  [7,8]
+        //5AM-6    [9,10]
+        //Make a resize handler
+        window.addEventListener('resize', resizeHandler);
+        window.addEventListener("orientationchange",resizeHandler);
+
+        
+        //test values for data to put into table
+          //number of members available during each time slot
+          //would be obtained using availability_scan
+        var available_members = "212113213114112224015114112111214124224111141241";
+          //whether each time_slot has a certain minimum member
+          //availability would be obtained by filter_by_member_count
+        var filtered_schedule = "101001101001001111001001001000101011111000010110";
+        var filter_mode = 0; //represents 'on'
+        function resizeHandler(){
+         options ={
+            title: "Group Memebers Available",
+            width: document.documentElement.clientWidth * .6,
+            height: document.documentElement.clientHeight * 2.5,
+            bar: {groupWidth: "95%"},
+            tooltip: {isHtml: true},
+            legend: { position: "none" },
+            chartArea: { left: document.documentElement.clientWidth * .3 }
+        };
+       }
+       
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        
+          data.addColumn("string", "Time");
+        if (filter_mode)  //for chart filtered by availability
+        {
+          data.addColumn("number", "Available slot");
+          data.addColumn({ type: "string", role: "style" });
+          data.addColumn({ type: "string", role: "annotation" });
+          data.addColumn({ type: "string", role: "tooltip" });
+        }
+        else //for regular bar graph of members at each time slot
+        {
+          data.addColumn("number", "Members");
+          data.addColumn({ type: "string", role: "style" });
+        }
+        var alternating_colors = ["red", "#ab1403"];
+  
+        for (var i = 0; i < SLOT_COUNT; i++)
+        {
+
+            var time_slot = TIME_SLOT_BOUNDS[i] + "-" + TIME_SLOT_BOUNDS[i+1];
+            var color = alternating_colors[i % 2];
+            if (filter_mode)
+            {
+              var tooltip_label = time_slot + "\n Members: " + available_members[i];
+              data.addRow([time_slot, parseInt(filtered_schedule[i]), color,
+                          available_members[i], tooltip_label]);
+            }
+            else
+            {
+              data.addRow([time_slot, parseInt(available_members[i]), color]);
+            }
+        }
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+      
+      var options = {
+        title: "Group Memebers Available",
+        //width: document.documentElement.clientWidth,
+        width: document.documentElement.clientWidth * 1,
+        height: document.documentElement.clientHeight * 2.5,
+        bar: {groupWidth: "95%"},
+        tooltip: {isHtml: true},
+        legend: { position: "none" },
+        chartArea: { left: document.documentElement.clientWidth * .25 }
+      };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById("chart_div"));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
