@@ -27,7 +27,7 @@ function signInS(){
 }  
 
 function loginS(){
-    window.location.href = "landingpage.html";
+    window.location.href = "login-page.html";
 }
     
 
