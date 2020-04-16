@@ -1,0 +1,96 @@
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="styletest.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			  	          <script src="testing.js"></script>
+
+    <title>When Diagram</title>
+	<!-- NAV -->
+	  </head>
+
+<nav id="navbar" class="push better-nav fixed-top">
+  <div class="container">
+    <div class="head">
+      <a href="#" class="brand">
+        <div class="logo">
+          <img class="image" img src="mylogo.png" width="50" height="50" alt="" />
+        </div>
+        <div class="title">
+          <h3>WhenDiagram</h3>
+        </div>
+      </a>
+    </div>
+    <div class="body">
+      <ul>
+        <li class="home"><a href="login-pageTest.html">Login</a></li>
+        <li class="page"><a href="aboutTest.html">About</a></li>
+		      </ul>
+			  
+			  	          <script src="testing.js"></script>
+
+			  </div>
+			  </div>
+			  
+
+</nav>
+
+<!-- BODY / SIGNUP -->
+  <body>
+    <div class="Signup-form">
+        <h1>Sign up</h1>
+        <div class="txtb">
+            
+            <input type ="text" id = "username"pattern="[a-zA-Z0-9](?!.*[^a-zA-Z0-9]).{5,}" title="Must contain only alphanumeric characters, and at least 5 or more characters" required>
+            <span data-placeholder= "Username"></span>
+            
+        </div>
+        <div class="txtb">
+            
+            <input type="password" id = "password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            <span data-placeholder="Password"></span>
+            
+        </div>
+        <button  class="logbtn" id = "signup">Sign up</button>
+        
+        <div class ="bottom-text">
+        Have an account? <a href="login-pageTest.html">Login</a>
+        
+        </div>
+    
+    </div>
+        
+        
+        <script type="text/javascript">
+
+        function userid_validation(uid,mx,my)
+            {
+                var uid_len = uid.value.length;
+                if (uid_len == 0 || uid_len >= my || uid_len < mx)
+            {
+            alert("User Id should not be empty / length be between "+mx+" to "+my);
+            uid.focus();
+            return false;
+            }
+            return true;
+            }
+
+
+
+            $(".txtb input").on("focus",function(){
+                $(this).addClass("focus");
+            });
+            $(".txtb input").on("blur",function(){
+                if($(this).val() =="")
+                $(this).addClass("focus");
+            });
+            
+        </script>
+        <script src="listener_signup.js"></script>
+        <script src="connector.js"></script>
+    </body>
