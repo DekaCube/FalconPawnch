@@ -12,6 +12,31 @@ var group = ""
 var group1 = ""
 var group2 = ""
 
+function read_time(){
+    let buttonbase = "time";
+    let workspace = document.getElementById(buttonbase);
+    if(workspace.classList.contains("active")){
+        time = time.setCharAt(time,0,'1');
+        alert(time);
+    }else{
+        time = time.setCharAt(time,0,'0');
+        alert(time);
+    }
+    for(let i = 1;i < 48;i++){
+        workspace = document.getElementById(buttonbase + i);
+        if(workspace.classList.contains("active"){
+            time = time.setCharAt(time,i,'1');
+        }
+        else
+        {
+            time = time.setCharAt(time,i,'0');
+        }
+    }
+}
+    
+          
+        
+
 
 function highlight_buttons(timevalue){
     
