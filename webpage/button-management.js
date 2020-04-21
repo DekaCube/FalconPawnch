@@ -497,10 +497,10 @@ $("#time47").click(function() {
 
 $("#reset").click(function(){
     $('button.active').removeClass('active');
+    var time ="000000000000000000000000000000000000000000000000"
     });
 
 
 function resetAll() {
     document.getElementById("buts").reset();
 }
-
