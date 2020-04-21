@@ -96,7 +96,7 @@ echo '<script type="text/javascript">
                        2]);
 
       var options = {
-        title: "Group Memebers Available",
+        title: "Group Memebers Available (" + day + ")",
         width: document.documentElement.clientWidth * .9,
         height: document.documentElement.clientHeight * .9,
         bar: {groupWidth: "95%"},
