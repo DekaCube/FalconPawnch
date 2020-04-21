@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('create').onclick = group_handler;
 
     document.getElementById('join').onclick = join_handler;
-    
+    document.getElementById('openform1').onclick = openForm;
+    document.getElementById('openform2').onclick = openForm2;
     
     display_name();
     
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
     Session.getInfo(groupInfoS,groupInfoF);
 
     Session.getGroupInfo("123321321",groupinfoSuccess,failed);
+    redrawGroupPanel();
 
     
     
@@ -138,10 +140,33 @@ function groupInfoS(){
    
 }
 
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    redrawGroupPanel() ; 
+  }
+  
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    redrawGroupPanel() ;   
+  }
+
+function openForm2() {
+    document.getElementById("myForm2").style.display = "block";
+    redrawGroupPanel() ; 
+  }
+  
+function closeForm2() {
+    document.getElementById("myForm2").style.display = "none";
+    redrawGroupPanel();
+  }
+
 function groupInfoF(){
     alert("SOMETHING WENT WRONG!");
 }
 
+function redrawGroupPanel(){
+    Session.getInfo(populateGroups,null_callback);
+}
 
 
 function listen_handler(){
@@ -162,8 +187,6 @@ function display_name(){
 function success(){
     console.log(Session.access_token);
     console.log("worked");
-    alert("success");
-
 }
 
 function failed(){

@@ -450,46 +450,55 @@ $("#time47").click(function() {
 $("#option1").click(function() {
     day = "monday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 $("#option2").click(function() {
     day = "tuesday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 $("#option3").click(function() {
     day= "wednesday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 $("#option4").click(function() {
     day = "thursday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 $("#option5").click(function() {
     day = "friday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 
 $("#option6").click(function() {
     day = "saturday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 
 $("#option7").click(function() {
     day = "sunday";
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 $("#reset").click(function(){
     $('button.active').removeClass('active');
+    time = "000000000000000000000000000000000000000000000000";
     });
 
 
 function resetAll() {
     document.getElementById("buts").reset();
+    time = "000000000000000000000000000000000000000000000000";
 }
 
