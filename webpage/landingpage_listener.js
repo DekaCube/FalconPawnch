@@ -18,6 +18,60 @@ document.addEventListener("DOMContentLoaded", function(){
 
     Session.getGroupInfo("123321321",groupinfoSuccess,failed);
     redrawGroupPanel();
+    
+    
+    
+    $("#option1").click(function() {
+    day = "monday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.monday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
+$("#option2").click(function() {
+    day = "tuesday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.tuesday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
+$("#option3").click(function() {
+    day= "wednesday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.wednesday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
+$("#option4").click(function() {
+    day = "thursday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.thursday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
+$("#option5").click(function() {
+    day = "friday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.friday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
+
+$("#option6").click(function() {
+    day = "saturday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.saturday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
+
+$("#option7").click(function() {
+    day = "sunday";
+    $('button.active').removeClass('active');
+    highlight_buttons(UserInfo.sunday);
+    Session.getInfo(null_callback,null_callback);
+    });
+
 
     
     
@@ -137,6 +191,7 @@ function populateGroups(){
 
 function groupInfoS(){
     populateGroups()
+    highlight_buttons(UserInfo.monday);
    
 }
 
@@ -168,7 +223,7 @@ function redrawGroupPanel(){
 
 
 function listen_handler(){
-
+    
     Session.updateTime(day,time,success,failed);
 }
 
@@ -185,6 +240,7 @@ function display_name(){
 function success(){
     console.log(Session.access_token);
     console.log("worked");
+    Session.getInfo(null_callback,null_callback);
 }
 
 function failed(){
@@ -201,4 +257,5 @@ function groupinfoSuccess(){
     console.log(Session.access_token);
     console.log("group retrived");
     console.log(GroupInfo.arrToString(GroupInfo.getMonday()));
+    
 }

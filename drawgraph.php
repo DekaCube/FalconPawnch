@@ -3,16 +3,11 @@
 //CORS HEADER FOR X-ORIGIN
 header("Access-Control-Allow-Origin: *");
 
-require_once './helpers.php';
-require_once './DB.php';
-require_once './creds.php';
-require_once './validate_inner.php';
+function add_quotes($str) {
+    return sprintf('"%s"', $str);
+}
 
-$data = $_REQUEST['data'];
 
-$arr = str_split($data,1);
-$strdata = implode(',',$arr);
-//echo $strdata;
 
 echo '<script type="text/javascript">
      var datatime = ['.$strdata.'];
@@ -24,30 +19,25 @@ echo '<script type="text/javascript">
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-       
-       //12am-1AM [0,1];
-       //1am-2AM  [2,3];
-       //2am-3AM  [3,4]
-       //3AM-4AM  [5,6]
-       //4AM-5am  [7,8]
-       //5AM-6    [9,10]
-       //Make a resize handler
+
        window.addEventListener('resize', resizeHandler);
        window.addEventListener("orientationchange",resizeHandler);
        
        
        function resizeHandler(){
-         options = {
+        options = {
         title: "Group Memebers Available",
         width: document.documentElement.clientWidth,
         height: document.documentElement.clientHeight,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
+
+
         
         
       };
       drawChart();
-       }
+      }
        
        function getMax(a,b){
         return (a > b) ? a : b;
@@ -100,6 +90,13 @@ echo '<script type="text/javascript">
         height: document.documentElement.clientHeight * .9,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
+        hAxis: {
+        viewWindow: {
+        min: 0,
+        max: 5
+        },
+        ticks: [0, 1, 2, 3, 4, 5]} // display labels every 5
+        
       };
 
         

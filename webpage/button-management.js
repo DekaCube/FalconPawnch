@@ -13,6 +13,28 @@ var group1 = ""
 var group2 = ""
 
 
+function highlight_buttons(timevalue){
+    
+    let length = timevalue.length;
+    let buttonbase = "time";
+    let workspace = document.getElementById(buttonbase);
+    if(timevalue.charAt(0) == '1'){
+        workspace.classList.add("active");
+    }
+    else{
+        workspace.classList.remove("active");
+    }
+    for(let i = 1;i < length;i++){
+        workspace = document.getElementById(buttonbase + i);
+        if(timevalue.charAt(i) == 1){
+            workspace.classList.add("active");
+        }
+        else{
+            workspace.classList.remove("active");
+        }
+    }
+}
+
 $("#time").click(function() {
     if (time[0] == "1"){
         time = setzero(time,0);
@@ -447,42 +469,6 @@ $("#time47").click(function() {
     }
 });
 
-$("#option1").click(function() {
-    day = "monday";
-    $('button.active').removeClass('active');
-    });
-
-$("#option2").click(function() {
-    day = "tuesday";
-    $('button.active').removeClass('active');
-    });
-
-$("#option3").click(function() {
-    day= "wednesday";
-    $('button.active').removeClass('active');
-    });
-
-$("#option4").click(function() {
-    day = "thursday";
-    $('button.active').removeClass('active');
-    });
-
-$("#option5").click(function() {
-    day = "friday";
-    $('button.active').removeClass('active');
-    });
-
-
-$("#option6").click(function() {
-    day = "saturday";
-    $('button.active').removeClass('active');
-    });
-
-
-$("#option7").click(function() {
-    day = "sunday";
-    $('button.active').removeClass('active');
-    });
 
 $("#reset").click(function(){
     $('button.active').removeClass('active');
