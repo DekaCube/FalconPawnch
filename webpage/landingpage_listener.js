@@ -101,7 +101,7 @@ function read_time(){
         }
     }
     
-    alert(time);
+    //alert(time);
     return time;
 }
     
@@ -251,7 +251,7 @@ function redrawGroupPanel(){
 
 function listen_handler(){
     let thistime = read_time();
-    alert("TIME IS -- " + thistime);
+    //alert("TIME IS -- " + thistime);
     console.log("Trying to update time");
     console.log("Time length is " + thistime.length);
     Session.updateTime(day,thistime,success,failed);
