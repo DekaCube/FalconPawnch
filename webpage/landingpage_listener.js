@@ -118,7 +118,7 @@ function leaveGroupClick(){
 
 function join_handler(){
     let join = document.getElementById("groupname2").value;
-    Session.joinGroup(join,success,failed);
+    Session.joinGroup(join,redrawGroupPanel,failed);
 }
 
 function hideInfoClick(){
@@ -259,7 +259,7 @@ function listen_handler(){
 
 function group_handler(){
     let group = document.getElementById("groupname").value;
-    Session.createGroup(group,success,failed);
+    Session.createGroup(group,redrawGroupPanel,failed);
 }
 
 function display_name(){
