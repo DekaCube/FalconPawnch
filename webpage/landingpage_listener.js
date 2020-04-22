@@ -111,7 +111,7 @@ function null_callback(){
 
 function leaveGroupClick(){
     Session.leaveGroup(this.id,null_callback,null_callback());
-    Session.getInfo(groupInfoS,groupInfoF);
+    Session.getInfo(redrawGroupPanel,groupInfoF);
     
     
 }
