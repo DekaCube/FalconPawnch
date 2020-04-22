@@ -79,6 +79,33 @@ $("#option7").click(function() {
 
 });
 
+
+function read_time(){
+    let buttonbase = "time";
+    let workspace = document.getElementById(buttonbase);
+    if(workspace.classList.contains("active")){
+        time = setCharAt(time,0,'1');
+        
+    }else{
+        time = setCharAt(time,0,'0');
+        
+    }
+    for(let i = 1;i < 48;i++){
+        workspace = document.getElementById(buttonbase + i);
+        if(workspace.classList.contains("active")){
+            time = setCharAt(time,i,'1');
+        }
+        else
+        {
+            time = setCharAt(time,i,'0');
+        }
+    }
+    
+    alert(time);
+    return time;
+}
+    
+
 function null_callback(){
 }
 
@@ -223,8 +250,11 @@ function redrawGroupPanel(){
 
 
 function listen_handler(){
-    
-    Session.updateTime(day,time,success,failed);
+    let thistime = read_time();
+    alert("TIME IS -- " + thistime);
+    console.log("Trying to update time");
+    console.log("Time length is " + thistime.length);
+    Session.updateTime(day,thistime,success,failed);
 }
 
 function group_handler(){
