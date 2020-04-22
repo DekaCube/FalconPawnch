@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +91,7 @@
           </div>
       </div>
  <div style ="padding-top: 20px;" data-toggle="buttons" id = "buts">
-<button type="button" style="height: 25px; width:150px" class="btn btn-secondary btn-sm", id="time" >12:00 AM  - 12:30 AM</button>
+<button type="button" style="height: 25px; width:150px" class="btn btn-secondary btn-sm", id="time0" >12:00 AM  - 12:30 AM</button>
 <button type="button" style="height: 25px; width:150px" class="btn btn-secondary btn-sm", id="time1">12:30 AM - 1:00 AM</button>
 <button type="button" style="height: 25px; width:150px" class="btn btn-secondary btn-sm", id="time2">1:00 AM - 1:30 AM</button>
 <button type="button" style="height: 25px; width:150px" class="btn btn-secondary btn-sm", id="time3">1:30 AM - 2:00 AM</button>
@@ -154,8 +155,8 @@
          <label for="group" ><b>Group name</b></label>
          <input type="text" placeholder="Enter group name" name="group name" id ="groupname" required>
      
-         <button class="btn" id ="create" onclick="closeForm()">Create</button>
-         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+         <button class="btn" id ="create" onclick="closeForm()" >Create</button>
+         <button type="button" id ="close" class="btn cancel" onclick="closeForm()">Close</button>
        </div>
      </div>
      <div class="form-popup" id="myForm2">
@@ -165,8 +166,8 @@
         <label for="group" ><b>Group name</b></label>
         <input type="text" placeholder="Enter group name" name="group name" id ="groupname2" required>
     
-        <button class="btn" id ="join" onclick="closeForm2()">join</button>
-        <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+        <button class="btn" id ="join" onclick="closeForm()">join</button>
+        <button type="button" id="close2" class="btn cancel" onclick="closeForm2()">Close</button>
       </div>
     </div>
     <div id= "submiter">
@@ -178,21 +179,12 @@
         </script>
 
 <script>
-  function openForm() {
-    document.getElementById("myForm").style.display = "block";
-  }
-  
-  function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-  }
-
-  function openForm2() {
-    document.getElementById("myForm2").style.display = "block";
-  }
-  
-  function closeForm2() {
-    document.getElementById("myForm2").style.display = "none";
-  }
+$('#create').click(function(){
+    $('#close').click();
+})
+$('#join').click(function(){
+    $('#close2').click();
+})
   </script>
       <script src="button-management.js"></script>
       <script src="landingpage_listener.js"></script>
