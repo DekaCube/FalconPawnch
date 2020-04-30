@@ -163,8 +163,9 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
-                        }
+                            callback: function(value, index, values) {
+                            return (value)/1000+'K';}
+   }
                     }]
                 }
             }
